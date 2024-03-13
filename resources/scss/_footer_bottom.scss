@@ -1,0 +1,43 @@
+.footer-bottom {
+    background-color: rgb(48, 48, 48);
+    filter: drop-shadow(2px 4px 6px black);
+
+    button {
+        color: white;
+        border: 1px solid rgb(12, 105, 247);
+        background-color: rgb(48, 48, 48);
+        padding: 10px;
+
+        &:hover {
+            cursor: pointer;
+            background-color: white;
+            color: rgb(12, 105, 247);
+        }
+    }
+
+    .right {
+        display: flex;
+        align-items: center;
+
+        h5 {
+            color: rgb(12, 105, 247);
+            margin: 0 20px
+        }
+
+        ul {
+            gap: 20px;
+
+        }
+
+        li img:hover {
+            filter: invert(1);
+        }
+
+    }
+}
+
+.footer-bottom>div {
+    justify-content: space-between;
+    align-items: center;
+    height: 90px;
+}
