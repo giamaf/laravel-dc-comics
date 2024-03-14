@@ -104,12 +104,23 @@ main {
         height: 150px;
         display: block;
     }
+
+}
+
+.back-btn {
+    margin-top: 24px;
+    background-color: white;
+    color: rgb(12, 105, 247);
+
+    &:hover a {
+        color: white;
+    }
 }
 
 
 .talent-specs {
     background-color: whitesmoke;
-    padding: 20px 0 60px 0;
+    padding: 40px 0 40px 0;
     text-transform: none;
     font-size: 0.7rem;
 

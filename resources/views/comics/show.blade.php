@@ -84,7 +84,7 @@
                     <span class="line-sep"></span>
                 </div>
             </div>
-
         </div>
+        <button class="btn btn-primary back-btn"><a href="{{ route('comics.index') }}">Back to comics</a></button>
     </section>
 @endsection
