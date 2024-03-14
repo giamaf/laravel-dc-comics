@@ -30,7 +30,32 @@ class ComicController extends Controller
      */
     public function store(Request $request)
     {
-        dd($request);
+        // Prendo i dati del form
+        $data = $request->all();
+
+        // Istanzio un nuovo Comic
+        $comic = new Comic();
+
+        //todo ----------------------------------------------------------
+        //todo ...quando le chiavi del db e del frontend sono uguali
+        //todo fillo tutto in un colpo
+        //! PER FILLARE TUTTO IN UN COLPO BISOGNA INSERIRE NEL MODEL COMIC LA PROPRIETA' fillable()
+        $comic->fill($data);
+
+        //todo ...quando le chiavi del db e del frontend sono diverse
+        // $comic->title = $data['title'];
+        // $comic->description = $data['description'];
+        // $comic->thumb = $data['thumb'];
+        // $comic->price = $data['price'];
+        // $comic->series = $data['series'];
+        // $comic->type = $data['type'];
+        // $comic->artists = $data['artists'];
+        // $comic->writers = $data['writers'];
+        //todo ----------------------------------------------------------
+
+        $comic->save();
+
+        return to_route('comics.show', $comic->id);
     }
 
     /**
