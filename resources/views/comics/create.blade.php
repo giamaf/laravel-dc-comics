@@ -6,8 +6,10 @@
 @section('main')
     <section id="add-comic">
         <div class="container">
-            <form class="row g-3 py-5">
-
+            <form class="row g-3 py-5" action="{{ route('comics.store') }}" method="POST">
+                {{-- ! ATTENZIONE, inserire questo token per autorizzare l'invio del form --}}
+                @csrf
+                {{-- ! ----------------------- --}}
                 {{-- Title --}}
                 <div class="col-md-6">
                     <label for="title" class="form-label">Title</label>

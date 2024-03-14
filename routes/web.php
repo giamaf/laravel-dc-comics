@@ -29,6 +29,8 @@ Route::get('/comics/create', [ComicController::class, 'create'])->name('comics.c
 //# Rotta dinamica per i singoli comics
 Route::get('/comics/{comic}', [ComicController::class, 'show'])->name('comics.show');
 
+//todo Rotta per il salvataggio di un comic
+Route::post('/comics', [ComicController::class, 'store'])->name('comics.store');
 
 //*--------------------- Rotte statiche -------------------------
 
