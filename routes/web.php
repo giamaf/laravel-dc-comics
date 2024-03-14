@@ -17,7 +17,7 @@ use App\Http\Controllers\ComicController;
 */
 
 //todo Rotta per la home
-Route::get('/home', HomeController::class)->name('home');
+Route::get('/home', HomeController::class)->name('other_route.home');
 
 //todo Rotta per la lista dei comics
 Route::get('/comics', [ComicController::class, 'index'])->name('comics.index');
@@ -32,14 +32,14 @@ Route::get('/comics/{comic}', [ComicController::class, 'show'])->name('comics.sh
 
 //*--------------------- Rotte statiche -------------------------
 
-Route::get('/characters', [RouteController::class, 'characters'])->name('characters');
-Route::get('/movies', [RouteController::class, 'movie'])->name('movies');
-Route::get('/tv', [RouteController::class, 'tv'])->name('tv');
-Route::get('/games', [RouteController::class, 'games'])->name('games');
-Route::get('/collectibles', [RouteController::class, 'collectibles'])->name('collectibles');
-Route::get('/videos', [RouteController::class, 'videos'])->name('videos');
-Route::get('/fans', [RouteController::class, 'fans'])->name('fans');
-Route::get('/news', [RouteController::class, 'news'])->name('news');
-Route::get('/shop', [RouteController::class, 'shop'])->name('shop');
+Route::get('/characters', [RouteController::class, 'characters'])->name('other_route.characters');
+Route::get('/movies', [RouteController::class, 'movie'])->name('other_route.movies');
+Route::get('/tv', [RouteController::class, 'tv'])->name('other_route.tv');
+Route::get('/games', [RouteController::class, 'games'])->name('other_route.games');
+Route::get('/collectibles', [RouteController::class, 'collectibles'])->name('other_route.collectibles');
+Route::get('/videos', [RouteController::class, 'videos'])->name('other_route.videos');
+Route::get('/fans', [RouteController::class, 'fans'])->name('other_route.fans');
+Route::get('/news', [RouteController::class, 'news'])->name('other_route.news');
+Route::get('/shop', [RouteController::class, 'shop'])->name('other_route.shop');
 
 //*--------------------------------------------------------------

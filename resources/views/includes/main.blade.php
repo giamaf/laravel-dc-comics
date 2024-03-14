@@ -13,9 +13,16 @@
                     </div>
                 @endforeach
             </div>
+            <button class="load">
+                <a href="#">
+                    <h5>LOAD MORE</h5>
+                </a>
+            </button>
+            <button class="add">
+                <a href="{{ route('comics.create') }}">
+                    <h5>Add new</h5>
+                </a>
+            </button>
         </div>
-        <button>
-            <h5>LOAD MORE</h5>
-        </button>
     </section>
 @endsection

@@ -26,7 +26,7 @@
     </header>
 
     {{-- # Main --}}
-    <main id="@yield('section-id')">
+    <main>
         @yield('main')
     </main>
 

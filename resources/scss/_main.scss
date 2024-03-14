@@ -19,19 +19,24 @@ main {
     }
 
     button {
-        color: white;
-        border: 1px solid transparent;
         background-color: rgb(12, 105, 247);
+        border: 1px solid transparent;
         padding: 10px 35px;
+        text-transform: uppercase;
+
+        h5 {
+            color: white;
+            font-size: 0.7rem;
+        }
 
         &:hover {
             cursor: pointer;
             background-color: white;
-            color: rgb(12, 105, 247);
-        }
 
-        h5 {
-            font-size: 0.7rem;
+            h5 {
+                color: rgb(12, 105, 247);
+                font-size: 0.7rem;
+            }
         }
     }
 }

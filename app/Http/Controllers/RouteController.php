@@ -8,46 +8,46 @@ class RouteController extends Controller
 {
     public function characters()
     {
-        return view('characters');
+        return view('others_route.characters');
     }
 
     public function movie()
     {
-        return view('movies');
+        return view('others_route.movies');
     }
 
     public function tv()
     {
-        return view('tv');
+        return view('others_route.tv');
     }
 
     public function games()
     {
-        return view('games');
+        return view('others_route.games');
     }
 
     public function collectibles()
     {
-        return view('collectibles');
+        return view('others_route.collectibles');
     }
 
     public function videos()
     {
-        return view('videos');
+        return view('others_route.videos');
     }
 
     public function fans()
     {
-        return view('fans');
+        return view('others_route.fans');
     }
 
     public function news()
     {
-        return view('news');
+        return view('others_route.news');
     }
 
     public function shop()
     {
-        return view('shop');
+        return view('others_route.shop');
     }
 }
