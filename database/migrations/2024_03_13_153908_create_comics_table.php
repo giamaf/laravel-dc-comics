@@ -20,8 +20,8 @@ return new class extends Migration
             $table->string('series');
             $table->date('sale_date')->default(now());
             $table->string('type')->default('not-specified');
-            $table->string('artists');
-            $table->string('writers');
+            $table->string('artists')->nullable();
+            $table->string('writers')->nullable();
             $table->timestamps();
         });
     }
