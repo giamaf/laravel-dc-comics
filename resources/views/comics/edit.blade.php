@@ -6,7 +6,7 @@
 @section('main')
     <section id="add-comic">
         <div class="container">
-            {{-- ! Se ho degli errori --}}
+            {{-- ! Se ho degli errori mostro l'ALERT --}}
             @if ($errors->any())
                 <div class="alert alert-danger mt-3 text-start">
                     <h3>ATTENTION: Invalid fields</h3>
@@ -17,35 +17,42 @@
                     </ul>
                 </div>
             @endif
-            <form class="row g-3" action="{{ route('comics.store') }}" method="POST">
+
+            {{-- Form --}}
+            <form class="row g-3" action="{{ route('comics.update', $comic->id) }}" method="POST">
                 {{-- ! ATTENZIONE, inserire questo token per autorizzare l'invio del form --}}
                 @csrf
                 {{-- ! ----------------------- --}}
+
+                {{-- * ATTENZIONE UTILIZZARE DIRETTIVA @method PER CONVERTIRE IL METODO POST IN "PUT" --}}
+                @method('PUT')
+                {{-- * ----------------------- --}}
+
                 {{-- Title --}}
                 <div class="col-md-6">
                     <label for="title" class="form-label">Title</label>
                     <input type="text" class="form-control" id="title" name="title" placeholder="Es: Avengers"
-                        value="{{ old('title', '') }}" autofocus>
+                        value="{{ old('title', $comic->title) }}" autofocus>
                 </div>
 
                 {{-- Series --}}
                 <div class="col-md-6">
                     <label for="series" class="form-label">Series</label>
                     <input type="text" class="form-control" id="series" name="series" placeholder="Es: Marvel Comics"
-                        value="{{ old('series', '') }}">
+                        value="{{ old('series', $comic->series) }}">
                 </div>
 
                 {{-- Description --}}
                 <div class="col-md-12">
                     <label for="description" class="form-label">Description</label>
-                    <textarea class="form-control" id="description" name="description" placeholder="Comics description..." rows="3">{{ old('description', '') }}</textarea>
+                    <textarea class="form-control" id="description" name="description" placeholder="Comics description..." rows="3">{{ old('description', $comic->description) }}</textarea>
                 </div>
 
                 {{-- Thumb --}}
                 <div class="col-12">
                     <label for="thumb" class="form-label">Comic Thumb</label>
                     <input type="text" class="form-control" id="thumb" name="thumb"
-                        placeholder="Insert a valid url">
+                        placeholder="Insert a valid url" value="{{ old('thumb', $comic->thumb) }}">
                 </div>
 
                 {{-- Price --}}
@@ -60,8 +67,8 @@
                     <label for="type" class="form-label">Type</label>
                     <select id="type" name="type" class="form-select">
                         <option selected disabled></option>
-                        <option @if (old('type', '') === 'comic-book') selected @endif value="comic-book">Comic Book</option>
-                        <option @if (old('type', '') === 'graphic-novel') selected @endif value="graphic-novel">Graphic Novel
+                        <option @if (old('type', $comic->type)) selected @endif value="comic-book">Comic Book</option>
+                        <option @if (old('type', $comic->type)) selected @endif value="graphic-novel">Graphic Novel
                         </option>
                     </select>
                 </div>
@@ -70,20 +77,20 @@
                 <div class="col-md-4">
                     <label for="artists" class="form-label">Artists</label>
                     <input type="text" class="form-control" id="artists" name="artists" placeholder="Es: Stan Lee"
-                        value="{{ old('artists', '') }}">
+                        value="{{ old('artists', $comic->artists) }}">
                 </div>
 
                 {{-- Writers --}}
                 <div class="col-md-4">
                     <label for="writers" class="form-label">Writers</label>
                     <input type="text" class="form-control" id="writers" name="writers" placeholder="Es: Roy Thomas"
-                        value="{{ old('writers', '') }}">
+                        value="{{ old('writers', $comic->writers) }}">
                 </div>
 
-                {{-- Add Button --}}
+                {{-- Buttons --}}
                 <div class="col-12">
                     <button type="reset" class="btn btn-secondary px-4">Clear</button>
-                    <button type="submit" class="btn btn-primary px-4">Add</button>
+                    <button type="submit" class="btn btn-success px-4">Confirm edit</button>
                 </div>
             </form>
         </div>
