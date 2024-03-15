@@ -7,7 +7,7 @@
     <section id="add-comic">
         <div class="container">
             {{-- ! Se ho degli errori mostro l'ALERT --}}
-            @if ($errors->any())
+            {{-- @if ($errors->any())
                 <div class="alert alert-danger mt-3 text-start">
                     <h3>ATTENTION: Invalid fields</h3>
                     <ul>
@@ -16,7 +16,7 @@
                         @endforeach
                     </ul>
                 </div>
-            @endif
+            @endif --}}
 
             {{-- Form --}}
             <form class="row g-3" action="{{ route('comics.update', $comic->id) }}" method="POST">
@@ -31,12 +31,16 @@
                 {{-- Title --}}
                 <div class="col-md-6">
                     <label for="title" class="form-label">Title</label>
-                    <input type="text" class="form-control @error('title') is-invalid @enderror" id="title"
-                        name="title" placeholder="Es: Avengers" value="{{ old('title', $comic->title) }}" autofocus>
+                    <input type="text"
+                        class="form-control @error('title') is-invalid @elseif(old('title', '')) is-valid @enderror"
+                        id="title" name="title" placeholder="Es: Avengers" value="{{ old('title', $comic->title) }}"
+                        autofocus>
                     @error('title')
                         <div class="invalid-feedback">
                             {{ $message }}
                         </div>
+                    @else
+                        <div class="form-text">*Required field</div>
                     @enderror
                 </div>
 
@@ -50,7 +54,13 @@
                 {{-- Description --}}
                 <div class="col-md-12">
                     <label for="description" class="form-label">Description</label>
-                    <textarea class="form-control" id="description" name="description" placeholder="Comics description..." rows="3">{{ old('description', $comic->description) }}</textarea>
+                    <textarea class="form-control @error('description') is-invalid  @elseif(old('description')) is-valid @enderror"
+                        id="description" name="description" placeholder="Comics description..." rows="3">{{ old('description', $comic->description) }}</textarea>
+                    @error('description')
+                        <div class="invalid-feedback">
+                            {{ $message }}
+                        </div>
+                    @enderror
                 </div>
 
                 {{-- Thumb --}}
@@ -63,12 +73,15 @@
                 {{-- Price --}}
                 <div class="col-6">
                     <label for="price" class="form-label">Price</label>
-                    <input type="number" class="form-control @error('price') is-invalid @enderror" id="price"
-                        name="price" value="{{ old('price', 1) }}" novalidation>
+                    <input type="number"
+                        class="form-control @error('price') is-invalid @elseif (old('price', '')) is-valid @enderror"
+                        id="price" name="price" value="{{ old('price', 1) }}" novalidation>
                     @error('price')
                         <div class="invalid-feedback">
                             {{ $message }}
                         </div>
+                    @else
+                        <div class="form-text">*Required field</div>
                     @enderror
                 </div>
 
@@ -98,9 +111,15 @@
                 </div>
 
                 {{-- Buttons --}}
-                <div class="col-12">
-                    <button type="reset" class="btn btn-secondary px-4">Clear</button>
-                    <button type="submit" class="btn btn-success px-4">Confirm edit</button>
+                <div class="col-12 d-flex gap-2 justify-content-between">
+                    <div>
+                        <a href="{{ route('comics.show', $comic->id) }}"><button type="button"
+                                class="btn btn-primary px-4">Back to Comic</button></a>
+                    </div>
+                    <div>
+                        <button type="reset" class="btn btn-secondary px-4">Clear</button>
+                        <button type="submit" class="btn btn-success px-4">Confirm edit</button>
+                    </div>
                 </div>
             </form>
         </div>

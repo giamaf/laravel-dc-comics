@@ -7,7 +7,7 @@
     <section id="add-comic">
         <div class="container">
             {{-- ! Se ho degli errori --}}
-            @if ($errors->any())
+            {{-- @if ($errors->any())
                 <div class="alert alert-danger mt-3 text-start">
                     <h3>ATTENTION: Invalid fields</h3>
                     <ul>
@@ -16,7 +16,7 @@
                         @endforeach
                     </ul>
                 </div>
-            @endif
+            @endif --}}
             <form class="row g-3 py-3" action="{{ route('comics.store') }}" method="POST">
                 {{-- ! ATTENZIONE, inserire questo token per autorizzare l'invio del form --}}
                 @csrf

@@ -3,28 +3,11 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Validation\Rule;
 use App\Models\Comic;
 
 class ComicController extends Controller
 {
-
-    protected $inputs_validation = [
-        'title' => 'required|string|unique:comics',
-        'series' => 'string',
-        'description' => 'string|unique:comics',
-        'thumb' => 'nullable|url:http,https',
-        'price' => 'required|numeric|min:1|max:1000',
-        'type' => 'string',
-        'artists' => 'nullable|string',
-        'writers' => 'nullable|string',
-    ];
-
-    protected $error_messages = [
-        //required
-        'title.required' => 'Insert a title',
-        'price.required' => 'Insert a price',
-    ];
-    
     /**
      * Display a listing of the resource.
      */
@@ -50,7 +33,16 @@ class ComicController extends Controller
     {
 
         // Effettuo la validazione dei valori arrivati dal form
-        $request->validate($this->inputs_validation, $this->error_messages);
+        $request->validate([
+            'title' => 'required|string|unique:comics',
+            'series' => 'string',
+            'description' => 'string|unique:comics',
+            'thumb' => 'nullable|url:http,https',
+            'price' => 'required|numeric|min:1|max:1000',
+            'type' => 'string',
+            'artists' => 'nullable|string',
+            'writers' => 'nullable|string',
+        ]);
 
         // Prendo i dati del form
         $data = $request->all();
@@ -102,7 +94,20 @@ class ComicController extends Controller
     public function update(Request $request, Comic $comic)
     {
         // Effettuo la validazione dei valori arrivati dal form
-        $request->validate($this->inputs_validation, $this->error_messages);
+        $request->validate([
+            'title' => ['required', 'string', Rule::unique('comics')->ignore($comic->id)],
+            'series' => 'string',
+            'description' => ['string', Rule::unique('comics')->ignore($comic->id)],
+            'thumb' => 'nullable|url:http,https',
+            'price' => 'required|numeric|min:1|max:1000',
+            'type' => 'string',
+            'artists' => 'nullable|string',
+            'writers' => 'nullable|string',
+        ],
+        [
+            'title.required' => 'ATTENTION! Required field',
+            'title.unique' => "The '$request->title' already exist",
+        ]);
         
         // Prendo i dati del form
         $data = $request->all();
@@ -114,7 +119,7 @@ class ComicController extends Controller
         //# $comic->save();
 
         //# 1) Popolo il db e salvo in un colpo solo (quando NON devo effettuare delle modifiche nel mezzo)
-        $comic->update();
+        $comic->update($data);
 
 
         return to_route('comics.show', $comic->id);
