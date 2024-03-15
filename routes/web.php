@@ -16,21 +16,21 @@ use App\Http\Controllers\ComicController;
 |
 */
 
-//todo Rotta per la home
-Route::get('/home', HomeController::class)->name('other_route.home');
-
-//todo Rotta per la lista dei comics
-Route::get('/comics', [ComicController::class, 'index'])->name('comics.index');
-
-//todo Rotta per la creazione di un nuovo comic
+//* GET
+Route::get('/home', HomeController::class)->name('other_route.home'); //todo Rotta per la home
+Route::get('/comics', [ComicController::class, 'index'])->name('comics.index'); //todo Rotta per la lista dei comics
 //! ATTENZIONE: le rotte statiche con lo stesso metodo (es: GET) devono stare sopra alle rotte dinamiche altrimenti non ci entrerò mai 
-Route::get('/comics/create', [ComicController::class, 'create'])->name('comics.create');
+Route::get('/comics/create', [ComicController::class, 'create'])->name('comics.create'); //todo Rotta per la creazione di un nuovo comic
+Route::get('/comics/{comic}', [ComicController::class, 'show'])->name('comics.show'); //# Rotta dinamica per i singoli comics
+Route::get('/comics/{comic}/edit', [ComicController::class, 'edit'])->name('comics.edit'); //# Rotta dinamica per la modifica di un comic
 
-//# Rotta dinamica per i singoli comics
-Route::get('/comics/{comic}', [ComicController::class, 'show'])->name('comics.show');
+//* POST
+Route::post('/comics', [ComicController::class, 'store'])->name('comics.store'); //todo Rotta per il salvataggio di un comic
 
-//todo Rotta per il salvataggio di un comic
-Route::post('/comics', [ComicController::class, 'store'])->name('comics.store');
+
+
+
+
 
 //*--------------------- Rotte statiche -------------------------
 

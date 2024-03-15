@@ -1,6 +1,6 @@
 @extends('layouts.main')
 
-@section('title', 'Add New')
+@section('title', 'Edit Comic')
 
 {{-- Main --}}
 @section('main')
@@ -17,7 +17,7 @@
                     </ul>
                 </div>
             @endif
-            <form class="row g-3 py-3" action="{{ route('comics.store') }}" method="POST">
+            <form class="row g-3" action="{{ route('comics.store') }}" method="POST">
                 {{-- ! ATTENZIONE, inserire questo token per autorizzare l'invio del form --}}
                 @csrf
                 {{-- ! ----------------------- --}}
@@ -80,10 +80,10 @@
                         value="{{ old('writers', '') }}">
                 </div>
 
-                {{-- Buttons --}}
-                <div class="col-12 mb-3">
+                {{-- Add Button --}}
+                <div class="col-12">
                     <button type="reset" class="btn btn-secondary px-4">Clear</button>
-                    <button type="submit" class="btn btn-primary px-4">Save</button>
+                    <button type="submit" class="btn btn-primary px-4">Add</button>
                 </div>
             </form>
         </div>

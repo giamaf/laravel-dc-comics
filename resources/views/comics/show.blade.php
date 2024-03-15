@@ -86,5 +86,6 @@
             </div>
         </div>
         <button class="btn btn-primary back-btn"><a href="{{ route('comics.index') }}">Back to comics</a></button>
+        <button class="btn btn-warning edit-btn"><a href="{{ route('comics.edit', $comic->id) }}">Edit</a></button>
     </section>
 @endsection

@@ -34,10 +34,10 @@ class ComicController extends Controller
         // Effettuo la validazione dei valori arrivati dal form
         $data = $request->validate([
             'title' => 'required|string|unique:comics',
+            'series' => 'string',
             'description' => 'string|unique:comics',
             'thumb' => 'nullable|url:http,https',
             'price' => 'required|numeric|min:1|max:1000',
-            'series' => 'string',
             'type' => 'string',
             'artists' => 'nullable|string',
             'writers' => 'nullable|string',
@@ -84,7 +84,7 @@ class ComicController extends Controller
      */
     public function edit(Comic $comic)
     {
-        //
+        return view('comics.edit', compact('comic'));
     }
 
     /**
