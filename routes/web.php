@@ -30,10 +30,6 @@ Route::put('/comics/{comic}', [ComicController::class, 'update'])->name('comics.
 Route::post('/comics', [ComicController::class, 'store'])->name('comics.store'); //todo Rotta per il salvataggio di un comic
 
 
-
-
-
-
 //*--------------------- Rotte statiche -------------------------
 
 Route::get('/characters', [RouteController::class, 'characters'])->name('other_route.characters');

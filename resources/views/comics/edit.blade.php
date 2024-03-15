@@ -31,8 +31,13 @@
                 {{-- Title --}}
                 <div class="col-md-6">
                     <label for="title" class="form-label">Title</label>
-                    <input type="text" class="form-control" id="title" name="title" placeholder="Es: Avengers"
-                        value="{{ old('title', $comic->title) }}" autofocus>
+                    <input type="text" class="form-control @error('title') is-invalid @enderror" id="title"
+                        name="title" placeholder="Es: Avengers" value="{{ old('title', $comic->title) }}" autofocus>
+                    @error('title')
+                        <div class="invalid-feedback">
+                            {{ $message }}
+                        </div>
+                    @enderror
                 </div>
 
                 {{-- Series --}}
@@ -58,8 +63,13 @@
                 {{-- Price --}}
                 <div class="col-6">
                     <label for="price" class="form-label">Price</label>
-                    <input type="number" class="form-control" id="price" name="price" value="{{ old('price', 1) }}"
-                        novalidation>
+                    <input type="number" class="form-control @error('price') is-invalid @enderror" id="price"
+                        name="price" value="{{ old('price', 1) }}" novalidation>
+                    @error('price')
+                        <div class="invalid-feedback">
+                            {{ $message }}
+                        </div>
+                    @enderror
                 </div>
 
                 {{-- Type --}}
@@ -95,6 +105,8 @@
             </form>
         </div>
     </section>
+@endsection
 
-
+@section('scripts')
+    <script></script>
 @endsection
