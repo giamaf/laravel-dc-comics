@@ -114,11 +114,12 @@ class ComicController extends Controller
         
         //! Due strade:
 
-        //# 1) Popolo il db e salvo in due passaggi (quando devo effettuare delle modifiche nel mezzo)
+        //todo EVENTUALI MODIFICHE
+        //# 1) Popolo il db e salvo in due passaggi
         //# $comic->fill();
         //# $comic->save();
 
-        //# 1) Popolo il db e salvo in un colpo solo (quando NON devo effettuare delle modifiche nel mezzo)
+        //# 1) Popolo il db e salvo in un colpo solo
         $comic->update($data);
 
 
