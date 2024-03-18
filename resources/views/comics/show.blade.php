@@ -85,7 +85,14 @@
                 </div>
             </div>
         </div>
-        <button class="btn btn-primary back-btn"><a href="{{ route('comics.index') }}">Back to comics</a></button>
-        <button class="btn btn-warning edit-btn"><a href="{{ route('comics.edit', $comic->id) }}">Edit</a></button>
+        <div class="d-flex gap-2 align-items-center justify-content-center">
+            <button class="btn btn-primary back-btn"><a href="{{ route('comics.index') }}">Back to comics</a></button>
+            <button class="btn btn-warning edit-btn"><a href="{{ route('comics.edit', $comic->id) }}">Edit</a></button>
+            <form action="{{ route('comics.destroy', $comic->id) }}" method="POST">
+                @csrf
+                @method('DELETE')
+                <button type="submit" class="btn btn-danger edit-btn">Delete</button>
+            </form>
+        </div>
     </section>
 @endsection

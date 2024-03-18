@@ -131,6 +131,13 @@ class ComicController extends Controller
      */
     public function destroy(Comic $comic)
     {
-        //
+        //! Opzione 1 con solo l'id come parametro della funzione (scrivo di più)
+        // $team = Team::findOrFail($id);
+        // $team->delete();
+
+        //! Opzione 2 con il fumetto come parametro della funzione
+        $comic->delete();
+
+        return to_route('comics.index');
     }
 }

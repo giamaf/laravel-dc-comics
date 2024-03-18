@@ -29,6 +29,8 @@ Route::get('/comics/{comic}/edit', [ComicController::class, 'edit'])->name('comi
 Route::put('/comics/{comic}', [ComicController::class, 'update'])->name('comics.update'); //# Rotta dinamica per salvare le modifiche di un comic
 Route::post('/comics', [ComicController::class, 'store'])->name('comics.store'); //todo Rotta per il salvataggio di un comic
 
+Route::delete('/comics/{comic}/destroy', [ComicController::class, 'destroy'])->name('comics.destroy'); //# Rotta per eliminare un comic
+
 
 //*--------------------- Rotte statiche -------------------------
 
