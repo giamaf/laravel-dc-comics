@@ -138,6 +138,10 @@ class ComicController extends Controller
         //! Opzione 2 con il fumetto come parametro della funzione
         $comic->delete();
 
-        return to_route('comics.index');
+        // Reindirizzo alla pagina index
+        // Con ->with passiamo un flash message in una station bag
+        return to_route('comics.index')
+        ->with('message', "$comic->title delete successful")
+        ->with('type', 'success');
     }
 }

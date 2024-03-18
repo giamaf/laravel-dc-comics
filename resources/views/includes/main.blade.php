@@ -1,4 +1,9 @@
 @section('main')
+    @if (session('message'))
+        <div class="alert alert-{{ session('type', 'info') }} m-0">
+            {{ session('message') }}
+        </div>
+    @endif
     <section id="cards">
         <div class="container">
             <div class="row">
