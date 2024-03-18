@@ -24,16 +24,22 @@
         {{-- todo Jumbo --}}
         @yield('jumbo')
     </header>
+    {{-- END Header --}}
+
 
     {{-- # Main --}}
     <main>
         @yield('main')
     </main>
+    {{-- # END Main --}}
+
 
     {{-- * Aside --}}
     <aside>
         @include('includes.aside')
     </aside>
+    {{-- * END Aside --}}
+
 
     {{-- ! Footer --}}
     <footer>
@@ -46,6 +52,8 @@
         @include('includes.footer_bottom')
 
     </footer>
+    {{-- ! END Footer --}}
+
 
     {{-- Scripts --}}
     @yield('scripts')

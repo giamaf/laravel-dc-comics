@@ -18,6 +18,8 @@
                 </div>
             @endif --}}
 
+            @include('includes.alert')
+
             {{-- Form --}}
             <form class="row g-3" action="{{ route('comics.update', $comic->id) }}" method="POST">
                 {{-- ! ATTENZIONE, inserire questo token per autorizzare l'invio del form --}}

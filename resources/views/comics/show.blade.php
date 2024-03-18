@@ -7,6 +7,7 @@
 @endsection
 
 @section('main')
+    @include('includes.alert')
     <section class="card-section">
         <div class="container-small flex-strech gap-xl">
             <div class="left">
@@ -88,11 +89,29 @@
         <div class="d-flex gap-2 align-items-center justify-content-center">
             <button class="btn btn-primary back-btn"><a href="{{ route('comics.index') }}">Back to comics</a></button>
             <button class="btn btn-warning edit-btn"><a href="{{ route('comics.edit', $comic->id) }}">Edit</a></button>
-            <form action="{{ route('comics.destroy', $comic->id) }}" method="POST">
+            <form action="{{ route('comics.destroy', $comic->id) }}" method="POST" id="delete-form">
                 @csrf
                 @method('DELETE')
                 <button type="submit" class="btn btn-danger edit-btn">Delete</button>
             </form>
         </div>
     </section>
+@endsection
+
+@section('scripts')
+    <script>
+        const deleteForm = document.getElementById('delete-form');
+
+        deleteForm.addEventListener('submit', e => {
+            // Impedisco il ricaricamento della pagina
+            e.preventDefault();
+
+            // Chiedo conferma di voler eliminare il Comic
+            const confirmation = confirm('Confermi di voler eliminare {{ $comic->title }}?');
+
+            // Se confermato invio il form
+            if (confirmation) deleteForm.submit();
+
+        });
+    </script>
 @endsection

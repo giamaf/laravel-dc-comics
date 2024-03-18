@@ -69,7 +69,9 @@ class ComicController extends Controller
 
         $comic->save();
 
-        return to_route('comics.show', $comic->id);
+        return to_route('comics.show', $comic->id)
+        ->with('message', "Comic create successful")
+        ->with('type', 'success');;
     }
 
     /**
@@ -123,7 +125,9 @@ class ComicController extends Controller
         $comic->update($data);
 
 
-        return to_route('comics.show', $comic->id);
+        return to_route('comics.show', $comic->id)
+        ->with('message', "$comic->title update successful")
+        ->with('type', 'success');;
     }
 
     /**
